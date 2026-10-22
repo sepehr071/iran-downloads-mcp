@@ -1,13 +1,13 @@
 [project]
 name = "iran-downloads-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Unofficial read-only MCP server for searching Iranian software and game download sites (metadata only): Soft98, P30Download, Downloadly, VGDL."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
 authors = [{ name = "Sepehr Radmard", email = "sepehrr80@gmail.com" }]
 requires-python = ">=3.10"
-keywords = ["mcp", "model-context-protocol", "iran", "software", "games", "download", "persian", "soft98", "p30download", "downloadly", "vgdl"]
+keywords = ["mcp", "mcp-server", "model-context-protocol", "iran", "persian", "soft98", "p30download", "downloadly", "vgdl", "software-download", "game-download", "software-search", "ai-agents", "claude", "metadata"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
