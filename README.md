@@ -30,7 +30,7 @@ An unofficial, read-only MCP server that searches the public pages of [Soft98](h
 - **Do not use when:** the user wants the file itself, a direct link, a password, or a crack. None of that is returned; send them to the item page `url` and remind them to check the licence.
 - **Output:** compact JSON. Dates are ISO (UTC where a time is shown); Soft98's Jalali dates are converted. Summaries are cut to 120 characters, descriptions to 600. Null and empty fields are omitted. Replies stay under ~15 KB (`per_source` max 5). A failing source is listed under `errors` while the others still answer. Pages are cached for 3 minutes.
 - **Machine-readable:** [`server.json`](https://github.com/sepehr071/iran-downloads-mcp/blob/main/server.json) and the
-  [awesome-iran-mcp catalog](https://github.com/sepehr071/awesome-iran-mcp).
+  [iran-mcp catalog](https://github.com/sepehr071/iran-mcp).
 
 ## Why
 
@@ -321,7 +321,7 @@ Releases: bump the version in `pyproject.toml` and `server.json`, then push a `v
 
 ## Related servers
 
-- [awesome-iran-mcp](https://github.com/sepehr071/awesome-iran-mcp): catalog of all Iranian-service MCP servers
+- [iran-mcp](https://github.com/sepehr071/iran-mcp): catalog of all Iranian-service MCP servers
 - [iran-apps-mcp](https://github.com/sepehr071/iran-apps-mcp) for Iranian app stores
 - [iran-news-mcp](https://github.com/sepehr071/iran-news-mcp) for Iranian news
 - [torob-mcp](https://github.com/sepehr071/torob-mcp) for price comparison on Torob
@@ -333,9 +333,9 @@ Unofficial and not affiliated with or endorsed by Soft98, P30Download, Downloadl
 
 ## Author
 
-<a href="https://www.linkedin.com/in/sepehr-radmard"><img src="https://raw.githubusercontent.com/sepehr071/awesome-iran-mcp/main/assets/author-banner.png" alt="Sepehr Radmard: open-source MCP servers for the Iranian web. LinkedIn: linkedin.com/in/sepehr-radmard" width="100%"></a>
+<a href="https://www.linkedin.com/in/sepehr-radmard"><img src="https://raw.githubusercontent.com/sepehr071/iran-mcp/main/assets/author-banner.png" alt="Sepehr Radmard: open-source MCP servers for the Iranian web. LinkedIn: linkedin.com/in/sepehr-radmard" width="100%"></a>
 
-Built and maintained by **Sepehr Radmard** (سپهر رادمرد). Connect on [LinkedIn](https://www.linkedin.com/in/sepehr-radmard) or follow [@sepehr071 on GitHub](https://github.com/sepehr071) for more MCP servers for Iranian websites, all listed in [awesome-iran-mcp](https://github.com/sepehr071/awesome-iran-mcp). If this saves you time, a star on the repo helps other people find it.
+Built and maintained by **Sepehr Radmard** (سپهر رادمرد). Connect on [LinkedIn](https://www.linkedin.com/in/sepehr-radmard) or follow [@sepehr071 on GitHub](https://github.com/sepehr071) for more MCP servers for Iranian websites, all listed in [iran-mcp](https://github.com/sepehr071/iran-mcp). If this saves you time, a star on the repo helps other people find it.
 
 ## License
 
