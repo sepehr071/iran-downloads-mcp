@@ -29,6 +29,7 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/sepehr071/iran-downloads-mcp"
 Issues = "https://github.com/sepehr071/iran-downloads-mcp/issues"
+Website = "https://mcpfarsi.ir/servers/iran-downloads/"
 
 [project.scripts]
 iran-downloads-mcp = "iran_downloads_mcp.server:main"

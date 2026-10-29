@@ -10,6 +10,7 @@ An unofficial, read-only MCP server that searches the public pages of [Soft98](h
 [![CI](https://github.com/sepehr071/iran-downloads-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/sepehr071/iran-downloads-mcp/actions/workflows/ci.yml)
 [![MCP Registry](https://img.shields.io/badge/MCP_Registry-io.github.sepehr071%2Firan--downloads--mcp-7c3aed)](https://registry.modelcontextprotocol.io/?q=iran-downloads-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-16a34a)](https://github.com/sepehr071/iran-downloads-mcp/blob/main/LICENSE)
+[![mcpfarsi](https://mcpfarsi.ir/badge/iran-downloads.svg)](https://mcpfarsi.ir/servers/iran-downloads/)
 
 [![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_iran--downloads--mcp-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=iran-downloads&config=%7B%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22iran-downloads-mcp%22%5D%7D)
 
@@ -326,6 +327,7 @@ Releases: bump the version in `pyproject.toml` and `server.json`, then push a `v
 - [iran-news-mcp](https://github.com/sepehr071/iran-news-mcp) for Iranian news
 - [torob-mcp](https://github.com/sepehr071/torob-mcp) for price comparison on Torob
 - [digikala-mcp](https://github.com/sepehr071/digikala-mcp) for products on Digikala
+- Listed on [mcpfarsi.ir](https://mcpfarsi.ir/servers/iran-downloads/), the Persian MCP marketplace
 
 ## Disclaimer
 
