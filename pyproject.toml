@@ -1,6 +1,6 @@
 [project]
 name = "iran-downloads-mcp"
-version = "0.1.2"
+version = "0.2.0"
 description = "Unofficial read-only MCP server for searching Iranian software and game download sites (metadata only): Soft98, P30Download, Downloadly, VGDL."
 readme = "README.md"
 license = "MIT"
