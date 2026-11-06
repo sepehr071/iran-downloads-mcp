@@ -60,7 +60,7 @@ SOURCES: dict[str, dict[str, Any]] = {
 Sources = Annotated[
     list[str],
     Field(
-        description="Source ids to include (soft98, p30download, downloadly, vgdl; see dl_list_sources). Empty = all.",
+        description="Source ids (see dl_list_sources). Empty = all.",
         examples=[["p30download", "downloadly"]],
     ),
 ]
@@ -572,11 +572,7 @@ async def _many(jobs: dict[str, Any], per_source: int) -> dict[str, Any]:
 
 @tool("List download sources")
 async def dl_list_sources() -> dict:
-    """List the four download-site sources and their latest-listing categories; call this first for valid ids.
-
-    Sources: soft98, p30download, downloadly, vgdl. This server returns metadata and the item page url only,
-    never file links. Next: dl_search, dl_latest or dl_item.
-    """
+    """List the four download-site sources and their latest-listing categories; call this first for valid ids."""
     return {
         "sources": [
             {
@@ -598,24 +594,23 @@ async def dl_search(
         Field(
             min_length=2,
             max_length=80,
-            description="Software or game name; Latin names work best on every site.",
+            description="Software or game name; Latin works best.",
             examples=["google chrome"],
         ),
     ],
     sources: Sources = [],  # noqa: B006
-    page: Annotated[int, Field(ge=1, le=20, description="Result page (1-20) of each source.", examples=[1])] = 1,
+    page: Annotated[int, Field(ge=1, le=20, description="Page of each source.", examples=[1])] = 1,
     per_source: Annotated[
         int,
-        Field(ge=1, le=PER_SOURCE_MAX, description=f"Items (1-{PER_SOURCE_MAX}) taken from each source.", examples=[3]),
+        Field(ge=1, le=PER_SOURCE_MAX, description="Items per source.", examples=[3]),
     ] = 3,
 ) -> dict:
     """Search the download sites by name and return metadata (title, item page url, category, date, short summary).
 
-    Results keep each site's own relevance order, grouped by source. Open the item page url yourself to download;
-    this server never returns file links. A failing source is listed under `errors`.
+    Grouped by source, each site's own relevance order. A failing source is listed under `errors`.
     """
     jobs = {s: _search(s, query, page) for s in _ids(sources)}
-    return {"query": query, "page": page, **await _many(jobs, per_source)}
+    return await _many(jobs, per_source)
 
 
 @tool("Latest downloads")
@@ -624,18 +619,18 @@ async def dl_latest(
     category: Annotated[
         str,
         Field(
-            description="Category slug from dl_list_sources, e.g. 'software' or 'game'. Empty = everything.",
+            description="Category slug from dl_list_sources. Empty = all.",
             examples=["game"],
         ),
     ] = "",
     per_source: Annotated[
         int,
-        Field(ge=1, le=PER_SOURCE_MAX, description=f"Items (1-{PER_SOURCE_MAX}) taken from each source.", examples=[3]),
+        Field(ge=1, le=PER_SOURCE_MAX, description="Items per source.", examples=[3]),
     ] = 3,
 ) -> dict:
     """Return the newest uploads of the download sites (soft98 has no latest listing), merged and sorted by date.
 
-    Metadata and item page urls only. Sources that failed or lack the category are listed under `errors`.
+    Sources that failed or lack the category are listed under `errors`.
     """
     ids = _ids(sources, need_latest=not sources)
     errors = {s: "no latest listing; use dl_search" for s in ids if not SOURCES[s]["latest"]}
@@ -655,15 +650,14 @@ async def dl_item(
     url: Annotated[
         str,
         Field(
-            description="Item page url from dl_search or dl_latest (soft98.ir, p30download.ir, downloadly.ir or vgdl.ir).",
+            description="Item page url from dl_search or dl_latest.",
             examples=["https://p30download.ir/fa/entry/101588/google-chrome"],
         ),
     ],
 ) -> dict:
     """Return the details of one download item: name, version, size, category, date, description and system requirements.
 
-    Fields a site does not publish are omitted (soft98 has no size; vgdl has neither size nor requirements). Never
-    includes download links, passwords or crack notes: open the item page url yourself and check the licence.
+    Fields a site does not publish are omitted (soft98 has no size; vgdl has neither size nor requirements).
     """
     host = (urlsplit(url).hostname or "").removeprefix("www.")
     source = next((s for s, v in SOURCES.items() if v["host"] == host), None)
