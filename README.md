@@ -16,7 +16,7 @@ An unofficial, read-only MCP server that searches the public pages of [Soft98](h
 
 > **Metadata search only.** This server never downloads or saves files, never returns file links, and does not resolve or bypass gated or tokenised download links. It returns no passwords and no crack or activation notes. Many listings on these sites are cracked, repacked or otherwise redistributed software. You are responsible for checking the licence of whatever you install and for following the law where you live.
 
-[For AI agents](#for-ai-agents) · [Why](#why) · [What it can do](#what-it-can-do) · [Quick start](#quick-start) · [Tools](#tools) · [Sources](#sources) · [How it works](#how-it-works) · [Good to know](#good-to-know) · [FAQ](#faq) · [Configuration](#configuration) · [فارسی](#فارسی) · [Development](#development) · [Related servers](#related-servers)
+[For AI agents](#for-ai-agents) · [Why](#why) · [What it can do](#what-it-can-do) · [Quick start](#quick-start) · [Tools](#tools) · [Sources](#sources) · [Good to know](#good-to-know) · [FAQ](#faq) · [Configuration](#configuration) · [فارسی](#فارسی) · [Development](#development) · [Related servers](#related-servers)
 
 ---
 
@@ -172,24 +172,6 @@ All 4 tools are annotated `readOnlyHint: true`.
 | `vgdl` | VGDL | WordPress REST `/wp-json/wp/v2/posts?search=` | REST posts, optional category: game, software, mobile | title, category, date, excerpt only (size and requirements sit next to crack and repack notes, so they are not read) |
 
 Titles carry the version where the site puts it there (for example `Google Chrome 155.0.8059.85`); `dl_item` returns a best-effort `version`.
-
-## How it works
-
-```text
-  AI agent  (Claude, Cursor, Copilot, ...)
-      │
-      │  MCP over stdio
-      ▼
-  iran-downloads-mcp  (runs on your machine)
-      │
-      │  HTTPS, GET only
-      ├──────▶  soft98.ir
-      ├──────▶  p30download.ir
-      ├──────▶  downloadly.ir
-      └──────▶  vgdl.ir
-```
-
-`iran-downloads-mcp` runs locally and reads the public pages, RSS feeds and WordPress REST posts of the four sites. There is no hosted server in between and no API key. Requests go out through a Chrome-impersonating client, at most 4 at a time with a little jitter; answers are cached for 3 minutes, failed GETs are retried, and only these four hosts over HTTPS are allowed. It does not read or decode the download lists or the keys that hide links on the sites.
 
 ## Good to know
 
